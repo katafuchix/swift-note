@@ -1,0 +1,7 @@
+func textViewDidChange(_ textView: UITextView) {
+        
+    // textViewに関して高さを算出
+    let height = textView.sizeThatFits(CGSize(width: textView.frame.size.width, height: CGFloat.greatestFiniteMagnitude)).height
+        
+    print(height)
+}
