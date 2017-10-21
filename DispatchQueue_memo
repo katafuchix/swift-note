@@ -1,0 +1,6 @@
+Swift3 遅延実行
+
+DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+    
+}
+
