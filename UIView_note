@@ -1,0 +1,11 @@
+UIViewからUIImageを生成
+
+open static func getUIImageFromUIView(_ myUIView:UIView) ->UIImage
+{
+        UIGraphicsBeginImageContextWithOptions(myUIView.frame.size, false, UIScreen.main.scale)
+        myUIView.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+}
+
