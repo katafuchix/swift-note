@@ -1,0 +1,11 @@
+Swift3 statusBarの色を変更
+
+// ステータスバーの色
+func setStatusBarBackgroundColor(color: UIColor) {
+    guard let statusBarWindow = UIApplication.shared.value(forKey: "statusBarWindow") as? UIView else {
+        return
+    }
+    let statusBar = statusBarWindow.subviews[0] as UIView
+    statusBar.backgroundColor = color
+}
+    
