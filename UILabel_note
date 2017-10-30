@@ -7,3 +7,25 @@ let paragraphStyle = NSMutableParagraphStyle()
 paragraphStyle.lineHeightMultiple = 1.3
 attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedText.length))
 commentLabel.attributedText = attributedText
+
+
+ヒラギノフォントを使う p g といった文字が下で切れてしまうので代わりにこういうクラスを使う
+StoryBoardで置き換えるだけで利用可能
+
+class PaddingLabel: UILabel {
+
+    // paddingの値
+    let padding = UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0)
+    
+    override func drawText(in rect: CGRect) {
+        let newRect = UIEdgeInsetsInsetRect(rect, padding)
+        super.drawText(in: newRect)
+    }
+    
+    override public var intrinsicContentSize: CGSize {
+        var intrinsicContentSize = super.intrinsicContentSize
+        intrinsicContentSize.height += padding.top + padding.bottom
+        intrinsicContentSize.width += padding.left + padding.right
+        return intrinsicContentSize
+    }
+}
