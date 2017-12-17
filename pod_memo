@@ -1,0 +1,10 @@
+‘TwitterKitResources.bundle file not found. Please use the Fabric Mac app to ensure TwitterKit is properly set-up.’
+2017年10月27日 AT 3:50 PM
+こんなエラーが出た場合
+*** Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, 
+reason: ‘TwitterKitResources.bundle file not found. Please use the Fabric Mac app to ensure TwitterKit is properly set-up.’ 
+
+pod インストールしなおし
+
+pod deintegrate
+pod install
