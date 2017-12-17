@@ -1,0 +1,84 @@
+platform :ios, '9.0'
+use_frameworks!
+
+def common
+    pod 'Alamofire'
+    pod 'AlamofireObjectMapper'
+    pod 'AlamofireImage'
+    pod 'ObjectMapper'
+    pod 'CodableAlamofire'
+end
+
+target ##TARGET## do
+    common
+end
+
+import CodableAlamofire
+
+    func getData(){
+        
+        let url = URL(string: "https://randomuser.me/api")!
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        
+        // https://randomuser.me/apiのresultsプロパティにアクセス
+        // 取得したJSONデータを一気にPerson構造体にマップ
+
+        Alamofire.request(url).responseDecodableObject(keyPath: "results", decoder: decoder) { (response: DataResponse<[Person]>) in
+            let repo = response.result.value
+            print(repo)
+        }
+    }
+
+// Codable
+// ユーザー情報を格納す構造体
+struct Person: Codable  {
+    let gender: String
+    let name: Name
+    let location: Location
+    let login: Login
+    let id: Id
+    let picture: Picture
+    
+    struct Name: Codable  {
+        let title: String
+        let first: String
+        let last: String
+    }
+    
+    struct Location: Codable  {
+        let street: String
+        let city: String
+        let state: String
+        let postcode: Int
+    }
+    
+    let email: String
+    
+    struct Login: Codable {
+        let username: String
+        let password: String
+        let salt: String
+        let md5: String
+        let sha1: String
+        let sha256: String
+    }
+    
+    let dob: String
+    let registered: String
+    let phone: String
+    let cell: String
+    
+    struct Id: Codable {
+        let name: String
+        let value: String
+    }
+    
+    struct Picture: Codable {
+        let large: String
+        let medium: String
+        let thumbnail: String
+    }
+    
+    let nat: String
+}
