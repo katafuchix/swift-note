@@ -1,0 +1,7 @@
+Team Provisioning Profileが更新されない場合　よくあるのが端末を追加したのに反映されない
+その場合はローカルにある Provisioning Profile を全て削除 
+
+# cd ~/Library/MobileDevice/
+# cd Provisioning\ Profiles/
+# ls -ltr 
+# rm -f *
