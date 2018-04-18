@@ -1,0 +1,23 @@
+これで任意の ViewController で利用できるはず
+
+import SwiftTweaks
+
+var tweaksVC : TweaksViewController?
+
+self.tweaksVC = TweaksViewController(tweakStore: OLTweaks.defaultStore,  delegate:self)
+self.present(self.tweaksVC!, animated: true, completion: nil)
+
+
+extension ViewController : TweaksViewControllerDelegate
+{
+    func tweaksViewControllerRequestsDismiss(_ tweaksViewController: TweaksViewController, completion: (() -> ())?) {
+        self.tweaksVC?.dismiss(animated: true, completion: nil)
+        
+    }
+}
+
+// この辺はサンプルを参考に実装すること
+
+class OLTweaks: NSObject {
+
+}
