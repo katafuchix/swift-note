@@ -1,0 +1,29 @@
+        let baseString = "検索をお試しください。"
+        
+        let attributedString = NSMutableAttributedString(string: baseString)
+        
+        attributedString.addAttribute(.link,
+                                      value: "https://www.google.co.jp/",
+                                      range: NSString(string: baseString).range(of: "検索"))
+        
+        // リンクの色を指定する  NSForegroundColorAttributeNameはエラーになるので注意
+        textView.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.orange]
+        textView.attributedText = attributedString
+        textView.isSelectable = true
+        textView.delegate = self
+        
+        
+extension SampleView: UITextViewDelegate {
+
+    // MARK: - Text View Delegate
+    
+    func textView(_ textView: UITextView,
+                  shouldInteractWith URL: URL,
+                  in characterRange: NSRange,
+                  interaction: UITextItemInteraction) -> Bool {
+        
+        print(URL)
+        
+        return false
+    }
+}
