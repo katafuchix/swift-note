@@ -1,0 +1,56 @@
+import RxSwift
+import Action
+
+protocol MyViewModelInputsType {
+    // Inputs headers
+}
+
+protocol MyViewModelOutputsType {
+    // Outputs headers
+}
+
+protocol MyViewModelActionsType {
+    // Actions headers
+}
+
+protocol MyViewModelType: class {
+    var inputs: MyViewModelInputsType { get }
+    var outputs: MyViewModelOutputsType { get }
+    var actions: MyViewModelActionsType { get }
+}
+
+final class MyViewModel: MyViewModelType {
+    
+    var inputs: MyViewModelInputsType { return self }
+    var outputs: MyViewModelOutputsType { return self }
+    var actions: MyViewModelActionsType { return self }
+    
+    // Setup
+    private let myViewModelService: MyViewModelServiceType
+    private let coordinator: SceneCoordinatorType
+  
+    // Inputs
+  
+    // Outputs
+  
+    // ViewModel Life Cycle
+    
+  
+    init(service: MyViewModelServiceType, coordinator: SceneCoordinatorType) {
+        // Setup
+        self.myViewModelService = service
+        self.coordinator = coordinator
+
+        // Inputs
+    
+        // Outputs
+      
+        // ViewModel Life Cycle
+    
+    }
+
+    // Actions
+  
+}
+
+extension MyViewModel: MyViewModelInputsType, MyViewModelOutputsType, MyViewModelActionsType { }
